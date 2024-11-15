@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './components/Header';
+import { Root } from './style/root';
+import Login from './components/Login';
+import Register from './components/Register';
+import TextEditor from './components/textEditor/TextEditor';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface AppTypes {
+  login: boolean;
+  register: boolean;
 }
+
+const App: React.FC = () => {
+  const [appWindow, setAppWindow] = useState<AppTypes>({
+    login: false,
+    register: false,
+  });
+  const [showEditor, setShowEditor] = useState<boolean>(false);
+
+  const { login, register } = appWindow;
+
+  return (
+    <Root>
+      <Header defineWindowHandler={setAppWindow} appWindow={appWindow} showEditorHandler={setShowEditor} />
+      <section>
+        {Object.values(appWindow).some((value) => value) && (
+          <button onClick={() => setAppWindow({ login: false, register: false })}>
+            exit
+          </button>
+        )}
+        {login && <Login defineWindowHandler={setAppWindow} />}
+        {register && <Register />}
+      </section>
+      {showEditor && <TextEditor />}
+    </Root>
+  );
+};
 
 export default App;
