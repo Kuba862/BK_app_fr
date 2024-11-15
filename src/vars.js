@@ -4,7 +4,10 @@ export const COLORS = {
     green: "#11A016",
     light_green: "#63DA63",
     teal: "#46AA78",
-    dark_blue: "#2B3A83"
+    dark_blue: "#2B3A83",
+    light_grey: "#E5E5E5",
+    dark_grey: "#808080",
+    orange: "#E07811"
 }
 
 export const HIGHLIGHT_COLORS = [

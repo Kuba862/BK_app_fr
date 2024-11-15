@@ -1,0 +1,59 @@
+.editor_content {
+    border: 1px solid #808080;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    min-height: 400px;
+    max-height: 800px;
+    overflow-y: auto;
+    margin-top: 25px;
+}
+
+.ProseMirror {
+    min-height: 380px;
+    outline: none;
+}
+
+table {
+    width: 100%; /* Ustaw szerokość tabeli na pełną szerokość rodzica */
+    border-collapse: collapse; /* Usuń odstępy między komórkami */
+    margin: 0; /* Dodaj marginesy dla odstępu od innych elementów */
+    font-size: 1rem; /* Ustaw rozmiar czcionki */
+    text-align: left; /* Wyrównaj tekst do lewej */
+    overflow: hidden;
+    table-layout: fixed;
+  }
+
+  td {
+    border: 1px solid #a2a2a2;
+  }
+
+  th {
+    border: 1px solid #313131;
+  }
+  
+  th, td {/* Dodaj delikatne obramowanie */
+    padding: 0.75rem; /* Dodaj odstęp wewnętrzny */
+  }
+  
+  th {
+    background-color: #ffffff; /* Ustaw jasne tło dla nagłówków */
+    font-weight: bold; /* Pogrub czcionkę nagłówków */
+  }
+  
+  tr:nth-child(even) {
+    background-color: #e4e4e4; /* Dodaj efekt zebra na co drugiej linii */
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1; /* Zmień kolor wiersza podczas najechania */
+  }
+  
+  caption {
+    margin-bottom: 0.5rem; /* Dodaj odstęp między tytułem tabeli a tabelą */
+    font-size: 1.25rem; /* Zwiększ rozmiar czcionki tytułu */
+    font-weight: bold; /* Pogrub czcionkę tytułu */
+    text-align: center; /* Wyrównaj tytuł do środka */
+    color: #333; /* Ustaw kolor tekstu */
+  }
+  

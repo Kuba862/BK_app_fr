@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext, ReactNode } from 'react';
+import axios from 'axios';
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -12,9 +13,27 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      setAuth(true);
+      verifyToken(token).then(isValid => {
+        setAuth(isValid);
+        if(!isValid) {
+          localStorage.removeItem('token');
+        }
+      })
     }
   }, []);
+
+  const verifyToken = async (token: string): Promise<boolean> => {
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_BE_API_URL}${process.env.REACT_APP_BE_VERIFY_ENDPOINT}`, {
+        headers: {
+          'x-auth-token': token
+        }
+      });
+      return res.data.ok;
+    } catch(error) {
+      return false;
+    }
+  }
 
   const login = (token: string) => {
     localStorage.setItem('token', token);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useEditor, EditorContent, BubbleMenu } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
@@ -25,17 +25,16 @@ import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import Youtube from '@tiptap/extension-youtube'
 import Toolbar from './Toolbar';
+import '../../style/style.css';
 
 const TextEditor = () => {
-  const [isEditable, setIsEditable] = useState<boolean>(true);
 
   const editor = useEditor({
     extensions: [
       StarterKit,
       Link.configure({
         openOnClick: true,
-      }),
-      Document, 
+      }), 
       Paragraph, 
       Text, 
       TextStyle,
@@ -72,7 +71,7 @@ const TextEditor = () => {
         nocookie: true,
       }),
     ],
-    content: '<p>Hello World</p>',
+    content: '<p>Wpisz tekst...</p>',
     editorProps: {
       attributes: {
         spellcheck: 'false',
@@ -80,38 +79,14 @@ const TextEditor = () => {
     },
   });
 
-  useEffect(() => {
-    if (editor) {
-      editor.setEditable(isEditable);
-    }
-  }, [isEditable, editor]);
-
   if (!editor) return null;
 
   return (
     <div style={{marginBlockStart: '1em', marginBlockEnd: '1em', marginInlineStart: '1em', marginInlineEnd: '1em', }} >
       <div>
-        <input
-          type="checkbox"
-          name="editable"
-          id="editable"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setIsEditable(e.target.checked)
-          }
-        />
-        {/* <button onClick={() => editor.chain().focus().toggleBold().run()}>
-          Blod
-        </button> */}
         <Toolbar editor={editor} />
       </div>
-      {editor && (
-        <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
-          <button onClick={() => editor.chain().focus().toggleBold().run()}>
-            Blod
-          </button>
-        </BubbleMenu>
-      )}
-      <EditorContent editor={editor} />
+      <EditorContent editor={editor} className='editor_content' />
     </div>
   );
 };
