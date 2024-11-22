@@ -1,17 +1,28 @@
 import styled from 'styled-components';
-import { COLORS } from '../vars';
 
 export const HeaderStyle = styled.header`
   display: flex;
   justify-content: space-between;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1) 15%,
-    rgba(43, 58, 131, 1) 70%
-  );
+  background: #1a1a1a;
+  position: relative;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
   padding: 1rem;
   color: white;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      #4ecdc4,
+      transparent 20%,
+      transparent 80%,
+      #4ecdc4
+    );
+  }
   .logo {
     img {
       width: 5rem;
@@ -40,7 +51,7 @@ export const HeaderStyle = styled.header`
         height: 2px;
         bottom: -4px;
         left: 50%;
-        background-color: ${COLORS.light_green};
+        background-color: #4ecdc4;
         transition: all 0.3s ease;
         transform: translateX(-50%);
       }
@@ -48,7 +59,13 @@ export const HeaderStyle = styled.header`
         width: 100%;
       }
       &:hover {
-        color: ${COLORS.light_green};
+        color: #4ecdc4;
+      }
+      &.active {
+        color: #4ecdc4;
+        &::after {
+          width: 100%;
+        }
       }
     }
   }

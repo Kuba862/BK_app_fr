@@ -2,7 +2,12 @@ import React, { useState, useEffect, createContext, ReactNode } from 'react';
 import axios from 'axios';
 
 interface AuthProviderProps {
-  children: ReactNode;
+  children?: ReactNode;
+  userID?: string | null;
+  loading?: boolean;
+  login?: (token: string, userID: string) => void;
+  logout?: () => void;
+  verifyToken?: (token: string) => Promise<boolean>;
 }
 
 export const AuthContext = createContext<any>(null);
@@ -10,16 +15,23 @@ export const AuthContext = createContext<any>(null);
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [auth, setAuth] = useState<boolean>(false);
   const [userID, setUserID] = useState<string|null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
+    const storedUserID = localStorage.getItem('uID');
+
+    if (token && storedUserID) {
       verifyToken(token).then(isValid => {
         setAuth(isValid);
         if(!isValid) {
           localStorage.removeItem('token');
+          localStorage.removeItem('uID');
         }
+        setLoading(false);
       })
+    } else {
+      setLoading(false);
     }
   }, []);
 
@@ -37,8 +49,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }
 
-  const login = (token: string) => {
+  const login = (token: string, userID: string) => {
     localStorage.setItem('token', token);
+    localStorage.setItem('uID', userID);
     setAuth(true);
   }
 
@@ -48,7 +61,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ auth, login, logout, verifyToken, userID }}>
+    <AuthContext.Provider value={{ auth, login, logout, verifyToken, userID, loading }}>
       {children}
     </AuthContext.Provider>
   );

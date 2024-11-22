@@ -1,10 +1,11 @@
 import React from 'react'
+import { FooterElement } from '../style/footer'
 
 const Footer = () => {
   return (
-    <footer>
+    <FooterElement>
         <p>Copyright &copy; 2024</p>
-    </footer>
+    </FooterElement>
   )
 }
 

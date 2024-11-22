@@ -28,6 +28,8 @@ import Youtube from '@tiptap/extension-youtube'
 import Toolbar from './Toolbar';
 import '../../style/style.css';
 import axios from 'axios';
+import { PresentationTitleInput } from '../../style/textEditor';
+import { GradientButton } from '../../style/Button';
 
 const TextEditor = () => {
   const [presentationTitle, setPresentationTitle] = useState<string>('');
@@ -99,12 +101,12 @@ const TextEditor = () => {
 
   return (
     <div style={{marginBlockStart: '1em', marginBlockEnd: '1em', marginInlineStart: '1em', marginInlineEnd: '1em', }} >
-      <input type="text" value={presentationTitle} onChange={(e) => setPresentationTitle(e.target.value)} placeholder='Nazwa prezentacji' required />
+      <PresentationTitleInput type="text" value={presentationTitle} onChange={(e) => setPresentationTitle(e.target.value)} placeholder='Nazwa prezentacji' required />
       <div>
         <Toolbar editor={editor} />
       </div>
       <EditorContent editor={editor} className='editor_content' />
-      <button onClick={handleSavePresentation} >Zapisz prezentację</button>
+      <GradientButton onClick={handleSavePresentation} >Zapisz prezentację</GradientButton>
     </div>
   );
 };

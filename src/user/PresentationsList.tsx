@@ -22,7 +22,7 @@ const PresentationsList = () => {
 
   return (
     <>
-    <div>PresentationsList</div>
+    <div>Presentations List</div>
     <aside>
         {presentations && presentations.map((presentation: any) => (
             <div key={presentation._id}>{presentation.title}</div>

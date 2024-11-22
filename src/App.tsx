@@ -1,40 +1,22 @@
-import React, { useState, lazy, Suspense, useContext } from 'react';
+import React, { lazy, Suspense } from 'react';
 import {
   createBrowserRouter,
   RouterProvider,
-  redirect,
-  Navigate,
-  Outlet,
+  BrowserRouter,
 } from 'react-router-dom';
-import { AuthContext } from './context/authContext';
 import { Root } from './style/root';
 import LoadingSpinner from './components/LoadingSpinner';
 import Home from './Home';
 import Layout from './Layout';
-// const Home = lazy(() => import('./components/Home'));
+import { AuthenticatedRoutes } from './AuthenticatedRoutes';
+import { ProtectedRoute, PublicRoute } from './RouteGuards';
+import AppRoutes from './AppRoutes';
+import { AuthProvider } from './context/authContext';
 const Login = lazy(() => import('./components/Login'));
 const Register = lazy(() => import('./components/Register'));
 const TextEditor = lazy(() => import('./components/textEditor/TextEditor'));
 const PresentationsList = lazy(() => import('./user/PresentationsList'));
 const Dashboard = lazy(() => import('./user/Dashboard'));
-
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { auth } = useContext(AuthContext);
-
-  if (!auth) {
-    return <Navigate to="/" replace />;
-  }
-  return <>{children}</>;
-};
-
-const PublicRoute = ({ children }: { children: React.ReactNode }) => {
-  const { auth } = useContext(AuthContext);
-
-  if (auth) {
-    return <Navigate to="/" replace />;
-  }
-  return <>{children}</>;
-};
 
 const router = createBrowserRouter([
   {
@@ -108,9 +90,13 @@ const router = createBrowserRouter([
 
 const App: React.FC = () => {
   return (
-    <Root>
-      <RouterProvider router={router} />
-    </Root>
+    <BrowserRouter>
+      <AuthProvider>
+      <Root>
+        <AppRoutes />
+        </Root>
+      </AuthProvider>
+    </BrowserRouter>
   );
 };
 

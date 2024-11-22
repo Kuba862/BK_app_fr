@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { HeaderStyle } from '../style/header';
 import { AuthContext } from '../context/authContext';
 import Logo from '../images/logo.webp';
@@ -13,10 +13,14 @@ const Header = () => {
         <img src={Logo} alt="logo" />
       </Link>
       <nav>
-        {auth && <Link to="/dashboard">Zapisane Prezentacje</Link>}
-          {auth && <Link to="/add-presentation">Dodaj Prezentację</Link>}
-          {auth ? <span onClick={logout} >Wyloguj</span> : <Link to="/login">Zaloguj</Link>}
-          {auth ? null : <Link to="/register">Rejestracja</Link>}
+        {auth && <NavLink to="/dashboard">Dashboard</NavLink>}
+        {auth && <NavLink to="/add-presentation">Dodaj Prezentację</NavLink>}
+        {auth ? (
+          <span onClick={logout}>Wyloguj</span>
+        ) : (
+          <NavLink to="/login">Zaloguj</NavLink>
+        )}
+        {auth ? null : <NavLink to="/register">Rejestracja</NavLink>}
       </nav>
     </HeaderStyle>
   );
