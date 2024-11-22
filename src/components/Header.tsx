@@ -13,9 +13,10 @@ const Header = () => {
         <img src={Logo} alt="logo" />
       </Link>
       <nav>
-          {auth && <Link to="/add-presentation">dodaj prezentację</Link>}
-          {auth ? <span onClick={logout} >wyloguj</span> : <Link to="/login">zaloguj</Link>}
-          {auth ? null : <Link to="/register">rejestracja</Link>}
+        {auth && <Link to="/dashboard">Zapisane Prezentacje</Link>}
+          {auth && <Link to="/add-presentation">Dodaj Prezentację</Link>}
+          {auth ? <span onClick={logout} >Wyloguj</span> : <Link to="/login">Zaloguj</Link>}
+          {auth ? null : <Link to="/register">Rejestracja</Link>}
       </nav>
     </HeaderStyle>
   );

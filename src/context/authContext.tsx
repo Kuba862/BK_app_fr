@@ -9,6 +9,7 @@ export const AuthContext = createContext<any>(null);
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [auth, setAuth] = useState<boolean>(false);
+  const [userID, setUserID] = useState<string|null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -29,6 +30,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           'x-auth-token': token
         }
       });
+      setUserID(res.data.userId);
       return res.data.ok;
     } catch(error) {
       return false;
@@ -46,7 +48,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ auth, login, logout, verifyToken }}>
+    <AuthContext.Provider value={{ auth, login, logout, verifyToken, userID }}>
       {children}
     </AuthContext.Provider>
   );

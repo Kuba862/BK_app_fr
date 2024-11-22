@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../vars';
 
 export const HeaderStyle = styled.header`
   display: flex;
@@ -19,21 +20,35 @@ export const HeaderStyle = styled.header`
       border-radius: 10px;
     }
   }
-  div {
-  }
   nav {
-    width: '10rem';
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
     span,
     a {
-      font-weight: 100;
+      font-weight: 200;
       cursor: pointer;
-      transition: 0.2s linear;
       color: white;
       text-decoration: none;
+      position: relative;
+      transition: all 0.3s ease;
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 50%;
+        background-color: ${COLORS.light_green};
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+      &:hover::after {
+        width: 100%;
+      }
       &:hover {
-        font-weight: 400;
+        color: ${COLORS.light_green};
       }
     }
   }

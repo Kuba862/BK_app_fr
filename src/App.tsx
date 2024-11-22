@@ -15,6 +15,8 @@ import Layout from './Layout';
 const Login = lazy(() => import('./components/Login'));
 const Register = lazy(() => import('./components/Register'));
 const TextEditor = lazy(() => import('./components/textEditor/TextEditor'));
+const PresentationsList = lazy(() => import('./user/PresentationsList'));
+const Dashboard = lazy(() => import('./user/Dashboard'));
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { auth } = useContext(AuthContext);
@@ -29,7 +31,7 @@ const PublicRoute = ({ children }: { children: React.ReactNode }) => {
   const { auth } = useContext(AuthContext);
 
   if (auth) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/" replace />;
   }
   return <>{children}</>;
 };
@@ -85,7 +87,17 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Suspense fallback={<LoadingSpinner />}>
-              <Home />
+              <Dashboard />
+            </Suspense>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/presentations/:id',
+        element: (
+          <ProtectedRoute>
+            <Suspense fallback={<LoadingSpinner />}>
+              <PresentationsList />
             </Suspense>
           </ProtectedRoute>
         ),

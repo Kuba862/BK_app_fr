@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../context/authContext';
 import { useEditor, EditorContent, BubbleMenu } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
@@ -26,8 +27,23 @@ import TableRow from '@tiptap/extension-table-row'
 import Youtube from '@tiptap/extension-youtube'
 import Toolbar from './Toolbar';
 import '../../style/style.css';
+import axios from 'axios';
 
 const TextEditor = () => {
+  const [presentationTitle, setPresentationTitle] = useState<string>('');
+  const { userID } = useContext(AuthContext);
+  const handleSavePresentation = async () => {
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_BE_API_URL}${process.env.REACT_APP_BE_PRESENTATION_ENDPOINT}`, {
+        content: editor?.getHTML(),
+        title: presentationTitle,
+        author: userID
+      });
+      console.log(response)
+    } catch(err) {
+      console.log(err)
+    }
+  }
 
   const editor = useEditor({
     extensions: [
@@ -83,10 +99,12 @@ const TextEditor = () => {
 
   return (
     <div style={{marginBlockStart: '1em', marginBlockEnd: '1em', marginInlineStart: '1em', marginInlineEnd: '1em', }} >
+      <input type="text" value={presentationTitle} onChange={(e) => setPresentationTitle(e.target.value)} placeholder='Nazwa prezentacji' required />
       <div>
         <Toolbar editor={editor} />
       </div>
       <EditorContent editor={editor} className='editor_content' />
+      <button onClick={handleSavePresentation} >Zapisz prezentację</button>
     </div>
   );
 };
