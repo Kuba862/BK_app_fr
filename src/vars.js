@@ -6,6 +6,7 @@ export const COLORS = {
     teal: "#46AA78",
     dark_blue: "#2B3A83",
     light_grey: "#E5E5E5",
+    medium_grey: "#C0C0C0",
     dark_grey: "#808080",
     orange: "#E07811"
 }
@@ -60,5 +61,7 @@ export const HIGHLIGHT_COLORS = [
         '#F8F8FF',
         '#FFD700',
         '#DAA520',
-        '#808080' 
+        '#808080',
+        '#ffffff',
+        '#000000'
 ]

@@ -22,10 +22,12 @@ justify-content: space-between;
         display: flex;
         justify-content: space-between;
         list-style: none;
-        li {
+        li, a {
             font-weight: 100;
             cursor: pointer;
             transition: .2s linear;
+            color: white;
+            text-decoration: none;
             &:hover {
                 font-weight: 400;
             }

@@ -2,46 +2,46 @@ import styled from "styled-components";
 import { COLORS } from "../vars";
 
 export const Button = styled.button`
-    background-color: ${COLORS.orange};
-    border: 1px solid ${COLORS.light_green};
+    border: none;
     border-radius: 5px;
-    color: white;
     padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: .6rem;
-    font-weight: 700;
-    display: inline-block;
+    background-color: transparent;
     cursor: pointer;
-    transition: all .2s ease-in-out;
-    background-size: 200% 100%;
-    background-position: 0% 0%;
+    transition: all .15s ease-in-out;
     &:hover {
-        background: linear-gradient(270deg, rgba(99,218,99,1) 90%, rgba(0,0,0,1) 100%);
-        background-position: 100% 0%;
-        color: ${COLORS.dark_blue};
-    }
-    &:disabled {
-        background-color: ${COLORS.dark_grey};
-        border: 1px solid ${COLORS.dark_grey};
-        /* background-color: ${COLORS.dark_blue};
-        color: ${COLORS.light}; */
-    }
-    &:disabled:hover {
-        color: ${COLORS.light};
+        background-color: ${COLORS.medium_grey};
     }
     &.active {
-        background: linear-gradient(90deg, rgba(99,218,99,1) 90%, rgba(0,0,0,1) 100%);
-        background-position: 100% 0%;
-        color: ${COLORS.dark_blue};
+        background-color: ${COLORS.medium_grey};
     }
+    svg {
+        width: 15px;
+        height: 15px;
+    }
+`
+
+export const ColorSection = styled.div`
+    position: absolute;
+    top: 153px;
+    left: 205px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 10%;
+    gap: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    padding: 10px 5px;
+    border-radius: 5px;
+    z-index: 1;
 `
 
 export const ButtonsGroup = styled.section`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 10px;
+    background-color: ${COLORS.light_grey};
 `;
 
 export const ButtonSection = styled.div`

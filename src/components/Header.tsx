@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { HeaderStyle } from '../style/header';
 import { AuthContext } from '../context/authContext';
 
@@ -15,13 +16,14 @@ const Header: React.FC<HeaderProps> = ({ defineWindowHandler, showEditorHandler 
   
   return (
     <HeaderStyle auth={auth} >
-      <div>logo</div>
+      <Link to="/" >logo</Link>
       <nav>
         <ul>
           {auth && (
-            <li onClick={() => showEditorHandler(true)} >
-              dodaj prezentację
-            </li>
+            // <li onClick={() => showEditorHandler(true)} >
+            //   dodaj prezentację
+            // </li>
+            <Link to="/add-presentation">dodaj prezentację</Link>
           )}
           <li
             value={auth ? 1 : 0}
