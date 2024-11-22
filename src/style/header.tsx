@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 
-interface HeaderStyleProps {
-    auth: boolean;
-}
-
-export const HeaderStyle = styled.header<HeaderStyleProps>`
-display: flex;
-justify-content: space-between;
+export const HeaderStyle = styled.header`
+  display: flex;
+  justify-content: space-between;
   background: rgb(0, 0, 0);
   background: linear-gradient(
     90deg,
@@ -15,23 +11,30 @@ justify-content: space-between;
   );
   padding: 1rem;
   color: white;
-  div {}
+  .logo {
+    img {
+      width: 5rem;
+      height: 5rem;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+  div {
+  }
   nav {
-    width: ${(props) => props.auth ? '20rem' : '10rem'};
-    ul {
-        display: flex;
-        justify-content: space-between;
-        list-style: none;
-        li, a {
-            font-weight: 100;
-            cursor: pointer;
-            transition: .2s linear;
-            color: white;
-            text-decoration: none;
-            &:hover {
-                font-weight: 400;
-            }
-        }
+    width: '10rem';
+    display: flex;
+    justify-content: space-between;
+    span,
+    a {
+      font-weight: 100;
+      cursor: pointer;
+      transition: 0.2s linear;
+      color: white;
+      text-decoration: none;
+      &:hover {
+        font-weight: 400;
+      }
     }
   }
 `;

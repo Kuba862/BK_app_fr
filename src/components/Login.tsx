@@ -1,12 +1,8 @@
-import React, { useRef, useState, useContext, Dispatch, SetStateAction } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/authContext';
 
-interface LoginProps {
-    defineWindowHandler: Dispatch<SetStateAction<{ login: boolean; register: boolean }>>;
-}
-
-const Login: React.FC<LoginProps> = ({ defineWindowHandler }) => {
+const Login = () => {
   const [loginInfo, setLoginInfo] = useState<string>('');
   const { login } = useContext(AuthContext);
 
@@ -32,7 +28,6 @@ const Login: React.FC<LoginProps> = ({ defineWindowHandler }) => {
         login(res.data.token);
         if(res.data.logged) {
             setLoginInfo(res.data.name);
-            defineWindowHandler({ login: false, register: false });
         }
     } catch (error) {
       console.log(error);

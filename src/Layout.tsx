@@ -1,34 +1,15 @@
 import React, { useState }from 'react'
+import { Outlet } from 'react-router-dom'
 import Header from './components/Header'
-import Login from './components/Login'
-import Register from './components/Register'
+import Footer from './components/Footer'
 
-interface HeaderTypes {
-    login: boolean;
-    register: boolean;
-}
+const Layout = () => {
 
-const Layout: React.FC = () => {
-    const [appWindow, setAppWindow] = useState<HeaderTypes>({
-        login: false,
-        register: false,
-    });
-
-    const { login, register } = appWindow;
-
-    const [showEditor, setShowEditor] = useState<boolean>(false);
   return (
     <>
-      <Header defineWindowHandler={setAppWindow} appWindow={appWindow} showEditorHandler={setShowEditor} />
-      <section>
-        {Object.values(appWindow).some((value) => value) && (
-          <button onClick={() => setAppWindow({ login: false, register: false })}>
-            exit
-          </button>
-        )}
-        {login && <Login defineWindowHandler={setAppWindow} />}
-        {register && <Register />}
-      </section>
+      <Header/>
+      <Outlet/>
+      <Footer/>
     </>
   )
 }
