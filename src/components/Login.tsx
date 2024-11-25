@@ -1,6 +1,7 @@
 import React, { useRef, useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/authContext';
+import { LoginForm, LoginInfo } from '../style/Login';
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState<string>('');
@@ -36,7 +37,7 @@ const Login = () => {
 
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <LoginForm onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label>Email</label>
           <input type="email" required ref={emailRef} />
@@ -48,8 +49,8 @@ const Login = () => {
         <div>
           <button type="submit">login</button>
         </div>
-      </form>
-      {loginInfo && <div>{loginInfo}</div>}
+      </LoginForm>
+      {loginInfo && <LoginInfo>{loginInfo}</LoginInfo>}
     </div>
   );
 };
