@@ -10,7 +10,7 @@ const Register = lazy(() => import('./components/Register'));
 const TextEditor = lazy(() => import('./components/textEditor/TextEditor'));
 const PresentationsList = lazy(() => import('./user/PresentationsList'));
 const Dashboard = lazy(() => import('./user/Dashboard'));
-
+const Verification = lazy(() => import('./Verification'));
 const AppRoutes = () => {
   return (
     <Routes>
@@ -75,6 +75,14 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="verify/:token" element={
+          <PublicRoute>
+            <Suspense fallback={<LoadingSpinner />}>
+          <Verification />
+          </Suspense>
+          </PublicRoute>
+          } 
+          />
       </Route>
     </Routes>
   );

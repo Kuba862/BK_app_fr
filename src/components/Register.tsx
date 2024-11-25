@@ -4,6 +4,7 @@ import axios from 'axios';
 const Register = () => {
   const [responseMsg, setResponseMsg] = useState<string>('');
   const [validForm, setValidForm] = useState<boolean>(false);
+  const [status, setStatus] = useState<boolean>(false);
 
   const refs = {
     firstName: useRef<HTMLInputElement>(null),
@@ -22,7 +23,7 @@ const Register = () => {
     e.preventDefault();
     const { firstName, lastName, email, password, confirmPassword } = refs;
     try {
-      await axios.post(
+      const res = await axios.post(
         `${process.env.REACT_APP_BE_API_URL}${process.env.REACT_APP_BE_REGISTER_ENDPOINT}`, {
             firstName: firstName.current?.value,
             lastName: lastName.current?.value,
@@ -31,6 +32,7 @@ const Register = () => {
             repeatPassword: confirmPassword.current?.value
         }
       );
+      setStatus(res.data.success);
     } catch (error) {
       console.log(error);
     }
@@ -63,6 +65,7 @@ const Register = () => {
           <button type="submit">register</button>
         </div>
       </form>
+      {status && <p>Zweryfikuj konto. Sprawdź swoją skrzynkę email i kilknij w link weryfikacyjny. Jeśli nie widzisz maila, sprawdź folder ze spamem.</p>}
     </div>
   );
 };

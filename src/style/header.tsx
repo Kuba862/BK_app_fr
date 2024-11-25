@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { FaRegMoon, FaRegSun } from 'react-icons/fa';
+
+const rotateForward = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 export const HeaderStyle = styled.header`
   display: flex;
@@ -68,5 +78,29 @@ export const HeaderStyle = styled.header`
         }
       }
     }
+  }
+`;
+
+export const SunIcon = styled(FaRegSun)`
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #ffffff;
+  transition: color 0.3s ease;
+  &:hover {
+    color: #ffff01;
+    animation: ${rotateForward} .5s linear forwards;
+  }
+`;
+
+export const MoonIcon = styled(FaRegMoon)`
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #ffff00;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #4ecdc4;
+    animation: ${rotateForward} .5s linear forwards;
   }
 `;
