@@ -18,11 +18,9 @@ const AppRoutes = () => {
         <Route
           index
           element={
-            <PublicRoute>
               <Suspense fallback={<LoadingSpinner />}>
                 <Home />
               </Suspense>
-            </PublicRoute>
           }
         />
         <Route

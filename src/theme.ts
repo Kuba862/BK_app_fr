@@ -10,8 +10,8 @@ export const theme = {
         `
       },
       text: {
-        // primary: 'rgba(255, 255, 255, 0.9)',
-        // secondary: 'rgba(255, 255, 255, 0.7)',
+        primary: 'rgba(255, 255, 255, 0.9)',
+        secondary: 'rgba(255, 255, 255, 0.7)',
         muted: 'rgba(255, 255, 255, 0.5)',
         accent: '#4ecdc4'
       },
