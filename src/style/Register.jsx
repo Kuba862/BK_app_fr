@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoginForm = styled.form`
+export const RegisterForm = styled.form`
   max-width: 400px;
   margin: 2rem auto;
   padding: 2rem;
@@ -13,6 +13,7 @@ export const LoginForm = styled.form`
     flex-direction: column;
     margin-bottom: 1.5rem;
     width: 100%;
+
     label {
       display: block;
       margin-bottom: 0.5rem;
@@ -59,40 +60,10 @@ export const LoginForm = styled.form`
         transform: translateY(0);
       }
     }
-    @media (max-width: 480px) {
-      margin: 1rem;
-      padding: 1.5rem;
-    }
-  }
-`;
-
-export const LoginContainer = styled.div`
-  min-height: calc(100vh - 200px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-
-  h1 {
-    color: ${(props) => props.theme.textPrimary};
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-`;
-
-export const LoginInfo = styled.div`
-  text-align: center;
-  margin-top: 1rem;
-  padding: 1rem;
-  color: ${(props) => props.theme.textSecondary};
-  font-size: 0.9rem;
-
-  &.error {
-    color: ${(props) => props.theme.error};
   }
 
-  &.success {
-    color: ${(props) => props.theme.success};
+  @media (max-width: 480px) {
+    margin: 1rem;
+    padding: 1.5rem;
   }
 `;

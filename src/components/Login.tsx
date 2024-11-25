@@ -43,11 +43,11 @@ const Login = () => {
           <input type="email" required ref={emailRef} />
         </div>
         <div>
-          <label>Password</label>
+          <label>Hasło</label>
           <input type="password" required ref={passwordRef} />
         </div>
         <div>
-          <button type="submit">login</button>
+          <button type="submit">Zaloguj się</button>
         </div>
       </LoginForm>
       {loginInfo && <LoginInfo>{loginInfo}</LoginInfo>}

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
+import { RegisterForm } from '../style/Register';
 
 const Register = () => {
   const [responseMsg, setResponseMsg] = useState<string>('');
@@ -40,13 +41,13 @@ const Register = () => {
 
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)} >
+      <RegisterForm onSubmit={(e) => handleSubmit(e)} >
         <div>
-          <label>First Name</label>
+          <label>Imię</label>
           <input type="text" onChange={validateFields} required ref={refs.firstName} />
         </div>
         <div>
-          <label>Last Name</label>
+          <label>Nazwisko</label>
           <input type="text" onChange={validateFields} required ref={refs.lastName} />
         </div>
         <div>
@@ -54,17 +55,17 @@ const Register = () => {
           <input type="email" onChange={validateFields} required ref={refs.email} />
         </div>
         <div>
-          <label>Password</label>
+          <label>Hasło</label>
           <input type="password" onChange={validateFields} required ref={refs.password} />
         </div>
         <div>
-          <label>Confirm Password</label>
+          <label>Potwierdź hasło</label>
           <input type="password" onChange={validateFields} required ref={refs.confirmPassword} />
         </div>
         <div>
-          <button type="submit">register</button>
+          <button type="submit">Zarejestruj się</button>
         </div>
-      </form>
+      </RegisterForm>
       {status && <p>Zweryfikuj konto. Sprawdź swoją skrzynkę email i kilknij w link weryfikacyjny. Jeśli nie widzisz maila, sprawdź folder ze spamem.</p>}
     </div>
   );
