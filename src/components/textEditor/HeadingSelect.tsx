@@ -28,11 +28,13 @@ const HeadingSelect = ({ editor }: HeadingSelectProps) => {
       value={getCurrentValue()}
       onChange={(e) => handleChange(e.target.value)}
       style={{
-        padding: '5px 10px',
+        color: '#1a1a1a',
+        border: 'none',
+        padding: '8px 16px',
         borderRadius: '4px',
-        backgroundColor: 'transparent',
-        border: `1px solid ${COLORS.dark_grey}`,
         cursor: 'pointer',
+        transition: 'all 0.3s ease',
+        backgroundColor: '#4ecdc4',
       }}
     >
       <option value="paragraph">Paragraph</option>

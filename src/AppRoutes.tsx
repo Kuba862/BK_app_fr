@@ -65,7 +65,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path="add-presentation"
+          path="add-presentation/:id"
           element={
             <ProtectedRoute>
               <Suspense fallback={<LoadingSpinner />}>
@@ -75,7 +75,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path="dashboard"
+          path="dashboard/:id"
           element={
             <ProtectedRoute>
               <Suspense fallback={<LoadingSpinner />}>

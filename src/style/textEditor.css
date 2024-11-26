@@ -1,0 +1,35 @@
+.ProseMirror {
+    color: black !important;
+  }
+  
+  .ProseMirror p {
+    color: black !important;
+  }
+  
+  .editor_content {
+    color: black !important;
+  }
+  
+  /* Style dla różnych elementów edytora */
+  .ProseMirror h1,
+  .ProseMirror h2,
+  .ProseMirror h3,
+  .ProseMirror h4,
+  .ProseMirror h5,
+  .ProseMirror h6,
+  .ProseMirror ul,
+  .ProseMirror ol,
+  .ProseMirror li,
+  .ProseMirror blockquote {
+    color: black !important;
+  }
+  
+  /* Style dla tabeli */
+  .ProseMirror table {
+    color: black !important;
+  }
+  
+  .ProseMirror th,
+  .ProseMirror td {
+    color: black !important;
+  }

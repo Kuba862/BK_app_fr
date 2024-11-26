@@ -1,26 +1,35 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/authContext';
+import {
+  DashboardCard,
+  LoadingContainer,
+  DashboardContainer,
+} from '../style/Dashboard';
+
 const Dashboard = () => {
   const { userID } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if(userID) {
+    if (userID) {
       setIsLoading(false);
     }
   }, [userID]);
 
-  if(isLoading && !userID) {
-    return <div>Loading...</div>
+  if (isLoading && !userID) {
+    return <LoadingContainer>Loading...</LoadingContainer>;
   }
 
   return (
-    <>
-      <div>Dashboard</div>
-      <Link to={`/presentations/${userID}`}>Zobacz swoje prezentacje</Link>
-    </>
-  )
-}
+    <DashboardContainer>
+      <DashboardCard to={`/presentations/${userID}`}>
+        Zobacz swoje prezentacje
+      </DashboardCard>
+      <DashboardCard to={`/add-presentation/${userID}`}>
+        Dodaj nową prezentację
+      </DashboardCard>
+    </DashboardContainer>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

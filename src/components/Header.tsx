@@ -6,7 +6,7 @@ import { GlobalContext } from '../context/globalContext';
 import Logo from '../images/logo.webp';
 
 const Header = () => {
-  const { auth, logout } = useContext(AuthContext);
+  const { auth, logout, userID } = useContext(AuthContext);
   const { toggleTheme, theme } = useContext(GlobalContext);
 
   return (
@@ -15,8 +15,8 @@ const Header = () => {
           <img src={Logo} alt="logo" />
         </Link>
         <nav>
-          {auth && <NavLink to="/dashboard">Dashboard</NavLink>}
-          {auth && <NavLink to="/add-presentation">Dodaj Prezentację</NavLink>}
+          {auth && <NavLink to={`/dashboard/${userID}`}>Dashboard</NavLink>}
+          {auth && <NavLink to={`/add-presentation/${userID}`}>Dodaj Prezentację</NavLink>}
           {auth ? (
             <span onClick={logout}>Wyloguj</span>
           ) : (
