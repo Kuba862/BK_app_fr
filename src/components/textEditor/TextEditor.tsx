@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useParams, Link as L } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link as L, useSearchParams } from 'react-router-dom';
 import { useEditor, EditorContent, BubbleMenu } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
@@ -34,15 +34,39 @@ import '../../style/textEditor.css';
 
 const TextEditor = () => {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const presentationID = searchParams.get('presentationID');
   const [presentationTitle, setPresentationTitle] = useState<string>('');
   const [message, setMessage] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
-  const resetEditor = () => {
-    setPresentationTitle('');
-    editor?.commands.clearContent();
-    setMessage('Prezentacja została zapisana. Możesz ją znaleźć ');
-  };
+  // const resetEditor = () => {
+  //   setPresentationTitle('');
+  //   editor?.commands.clearContent();
+  //   setMessage('Prezentacja została zapisana. Możesz ją znaleźć ');
+  // };
+
+  useEffect(() => {
+    const fetchPresentation = async () => {
+      if(presentationID) {
+        setIsLoading(true);
+        try {
+          const baseUrl = `${process.env.REACT_APP_BE_API_URL}${process.env.REACT_APP_BE_PRESENTATION_EDIT_ENDPOINT}`;
+          const res = await axios.get(`${baseUrl}/${presentationID}`);
+          setPresentationTitle(res.data.data.title);
+          editor?.commands.setContent(res.data.data.content);
+          setIsEditing(true);
+        } catch(err) {
+          console.log(err);
+          setMessage('Nie udało się załadować prezentacji');
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    }
+    fetchPresentation();
+  }, []);
 
   const handleSavePresentation = async () => {
     if (!presentationTitle.trim()) {
@@ -52,16 +76,22 @@ const TextEditor = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BE_API_URL}${process.env.REACT_APP_BE_PRESENTATION_ENDPOINT}`,
+      // const baseUrl = `${process.env.REACT_APP_BE_API_URL}${process.env.REACT_APP_BE_PRESENTATION_ENDPOINT}`;
+      const baseUrl = `${process.env.REACT_APP_BE_API_URL}${isEditing ? process.env.REACT_APP_BE_PRESENTATION_UPDATE_ENDPOINT : process.env.REACT_APP_BE_PRESENTATION_ENDPOINT}`;
+      const url = isEditing ? `${baseUrl}/${presentationID}` : baseUrl;
+      const method = isEditing ? 'put' : 'post';
+      
+      const response = await axios[method](
+        url,
         {
           content: editor?.getHTML(),
           title: presentationTitle,
           author: id,
+          id: presentationID ? presentationID : null,
         }
       );
       if (response.status === 200 || response.status === 201) {
-        resetEditor();
+        setMessage('Prezentacja została zapisana. Możesz ją znaleźć ');
       }
     } catch (err) {
       setMessage('Wystąpił błąd podczas zapisywania prezentacji');
