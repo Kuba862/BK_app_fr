@@ -11,6 +11,9 @@ const TextEditor = lazy(() => import('./components/textEditor/TextEditor'));
 const PresentationsList = lazy(() => import('./user/PresentationsList'));
 const Dashboard = lazy(() => import('./user/Dashboard'));
 const Verification = lazy(() => import('./Verification'));
+const ForgotPassword = lazy(() => import('./user/ForgotPassword'));
+const ResetPassword = lazy(() => import('./user/ResetPassword'));
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -41,6 +44,24 @@ const AppRoutes = () => {
                 <Register />
               </Suspense>
             </PublicRoute>
+          }
+        />
+        <Route
+          path="forgot-password"
+          element={
+            <PublicRoute>
+              <Suspense fallback={<LoadingSpinner />}>
+                <ForgotPassword />
+              </Suspense>
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="reset-password"
+          element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <ResetPassword />
+              </Suspense>
           }
         />
         <Route

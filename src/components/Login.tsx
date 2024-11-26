@@ -2,7 +2,7 @@ import React, { useRef, useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/authContext';
 import { LoginForm, LoginInfo } from '../style/Login';
-
+import { Link } from 'react-router-dom';
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState<string>('');
   const { login } = useContext(AuthContext);
@@ -48,6 +48,9 @@ const Login = () => {
         </div>
         <div>
           <button type="submit">Zaloguj się</button>
+        </div>
+        <div>
+          <p>Zapomniałeś hasła? <Link to="/reset-password">Zresetuj hasło</Link></p>
         </div>
       </LoginForm>
       {loginInfo && <LoginInfo>{loginInfo}</LoginInfo>}

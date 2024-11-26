@@ -1,21 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../context/authContext';
+import React, { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom';
-
+import { AuthContext } from '../context/authContext';
 const Dashboard = () => {
-  const [userID_helper, setUserID_helper] = useState<string>('');
   const { userID } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if(!userID) {
-      setUserID_helper(localStorage.getItem('userID') || '');
+    if(userID) {
+      setIsLoading(false);
     }
   }, [userID]);
-  
+
+  if(isLoading && !userID) {
+    return <div>Loading...</div>
+  }
+
   return (
     <>
       <div>Dashboard</div>
-      <Link to={`/presentations/${userID ? userID : userID_helper }`}>Zobacz swoje prezentacje</Link>
+      <Link to={`/presentations/${userID}`}>Zobacz swoje prezentacje</Link>
     </>
   )
 }

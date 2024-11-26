@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { VerificationMessage, VerificationButton, VerificationContainer } from './style/Verification';
+
 const Verification = () => {
   const { token } = useParams();
   const [status, setStatus] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const verifyHandler = async () => {
     try {
@@ -11,17 +14,18 @@ const Verification = () => {
         `${process.env.REACT_APP_BE_API_URL}${process.env.REACT_APP_BE_VERIFY_ENDPOINT}/${token}`
       );
       setStatus(res.data.success);
+      navigate('/login');
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <>
-      <h1>Verification</h1>
-      <button onClick={verifyHandler}>potwierdź email</button>
-      {status && <p>Konto zweryfikowane pomyślnie. Możesz się teraz zalogować.</p>}
-    </>
+    <VerificationContainer>
+      <h1>Zweryfikuj konto</h1>
+      <VerificationButton onClick={verifyHandler}>Potwierdź email</VerificationButton>
+      {status && <VerificationMessage>Konto zweryfikowane pomyślnie. Możesz się teraz zalogować.</VerificationMessage>}
+    </VerificationContainer>
   );
 };
 

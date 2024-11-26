@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
-import { RegisterForm } from '../style/Register';
+import { RegisterForm, RegisterMessage } from '../style/Register';
 
 const Register = () => {
   const [responseMsg, setResponseMsg] = useState<string>('');
@@ -34,6 +34,7 @@ const Register = () => {
         }
       );
       setStatus(res.data.success);
+      Object.values(refs).forEach((ref) => ref.current!.value = '');
     } catch (error) {
       console.log(error);
     }
@@ -66,7 +67,7 @@ const Register = () => {
           <button type="submit">Zarejestruj się</button>
         </div>
       </RegisterForm>
-      {status && <p>Zweryfikuj konto. Sprawdź swoją skrzynkę email i kilknij w link weryfikacyjny. Jeśli nie widzisz maila, sprawdź folder ze spamem.</p>}
+      {status && <RegisterMessage>Zweryfikuj konto. Sprawdź swoją skrzynkę email i kilknij w link weryfikacyjny. Jeśli nie widzisz maila, sprawdź folder ze spamem.</RegisterMessage>}
     </div>
   );
 };

@@ -1,6 +1,22 @@
 import styled from 'styled-components';
 
-export const RegisterForm = styled.form`
+export const ResetContainer = styled.div`
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  h1 {
+    color: ${(props) => props.theme.textPrimary};
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+`;
+
+export const ResetForm = styled.form`
+width: 100%;
   max-width: 400px;
   margin: 2rem auto;
   padding: 2rem;
@@ -51,7 +67,8 @@ export const RegisterForm = styled.form`
       font-weight: 600;
       cursor: pointer;
       transition: transform 0.2s ease, background 0.2s ease;
-      &:hover {
+
+      &:hover:not(:disabled) {
         background: ${(props) => props.theme.primaryHover};
         transform: translateY(-1px);
       }
@@ -59,16 +76,32 @@ export const RegisterForm = styled.form`
       &:active {
         transform: translateY(0);
       }
-    }
-  }
 
-  @media (max-width: 480px) {
-    margin: 1rem;
-    padding: 1.5rem;
+      &:disabled {
+        background: ${(props) => props.theme.disabled};
+        cursor: not-allowed;
+      }
+    }
+
+    @media (max-width: 480px) {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
   }
 `;
 
-export const RegisterMessage = styled.p`
+export const ResetMessage = styled.p`
   text-align: center;
   margin-top: 1rem;
+  padding: 1rem;
+  color: ${(props) => props.theme.textSecondary};
+  font-size: 0.9rem;
+
+  &.error {
+    color: ${(props) => props.theme.error};
+  }
+
+  &.success {
+    color: ${(props) => props.theme.success};
+  }
 `;
