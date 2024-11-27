@@ -13,6 +13,7 @@ const Dashboard = lazy(() => import('./user/Dashboard'));
 const Verification = lazy(() => import('./Verification'));
 const ForgotPassword = lazy(() => import('./user/ForgotPassword'));
 const ResetPassword = lazy(() => import('./user/ResetPassword'));
+const Media = lazy(() => import('./user/Media'));
 
 const AppRoutes = () => {
   return (
@@ -80,6 +81,16 @@ const AppRoutes = () => {
             <ProtectedRoute>
               <Suspense fallback={<LoadingSpinner />}>
                 <Dashboard />
+              </Suspense>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="media/:id"
+          element={
+            <ProtectedRoute>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Media />
               </Suspense>
             </ProtectedRoute>
           }

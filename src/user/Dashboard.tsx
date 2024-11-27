@@ -28,6 +28,9 @@ const Dashboard = () => {
       <DashboardCard to={`/add-presentation/${userID}`}>
         Dodaj nową prezentację
       </DashboardCard>
+      <DashboardCard to={`/media/${userID}`}>
+        Twoje media
+      </DashboardCard>
     </DashboardContainer>
   );
 };
