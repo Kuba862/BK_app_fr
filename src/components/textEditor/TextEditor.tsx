@@ -28,6 +28,8 @@ import TableCell from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
 import TableRow from '@tiptap/extension-table-row';
 import Youtube from '@tiptap/extension-youtube';
+import Bold from '@tiptap/extension-bold';
+import Italic from '@tiptap/extension-italic';
 import Toolbar from './Toolbar';
 import '../../style/style.css';
 import axios from 'axios';
@@ -304,6 +306,8 @@ const TextEditor = () => {
       Text,
       History,
       CustomParagraph,
+      Bold,
+      Italic,
       CustomImage.configure({
         allowBase64: true,
         HTMLAttributes: {
