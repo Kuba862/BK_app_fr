@@ -61,7 +61,7 @@ const Layout = () => {
           }}
         />
       </motion.div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

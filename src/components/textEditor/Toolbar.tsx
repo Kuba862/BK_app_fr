@@ -8,6 +8,8 @@ import TableActions from './TableActions';
 import HeadingSelect from './HeadingSelect';
 import HighlightButton from './HighlightButton';
 import UndoRedoButtons from './UndoRedoButtons';
+import ImageUpload from './ImageUpload';
+
 const Toolbar = ({ editor }: { editor: Editor | null }) => {
   const [textColor, setTextColor] = useState<string>('#000');
 
@@ -103,6 +105,7 @@ const Toolbar = ({ editor }: { editor: Editor | null }) => {
       </ToolbarButton>
       <HeadingSelect editor={editor} />
       <ToolbarButton className={editor?.isActive('image') ? 'active' : ''} onclick={addImage}><FaImage /></ToolbarButton>
+      <ImageUpload editor={editor} />
       <ToolbarButton className={editor?.isActive('table') ? 'active' : ''}
         onclick={() =>
           editor
