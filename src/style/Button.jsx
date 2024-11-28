@@ -20,10 +20,24 @@ export const GradientButton = styled.button`
   transition: all 0.3s ease;
   text-shadow: 0 0 8px rgba(78, 205, 196, 0.3);
   margin-top: 15px;
+
   &:hover {
     background: #4ecdc4;
     color: black;
     box-shadow: 0 0 20px rgba(78, 205, 196, 0.6);
     animation: ${pulseAnimation} 1.5s infinite;
+  }
+
+  @media (max-width: 768px) {
+    left: 85%;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    left: 70%;
+    padding: 8px 16px;
+    font-size: 12px;
+    margin-top: 10px;
   }
 `;

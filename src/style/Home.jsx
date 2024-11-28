@@ -9,6 +9,7 @@ export const CTASection = styled.section`
   border-radius: 20px;
   margin: 4rem 0;
   cursor: default;
+
   h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
@@ -19,6 +20,32 @@ export const CTASection = styled.section`
     font-size: 1.2rem;
     color: ${props => props.theme.textSecondary};
     margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+    margin: 3rem 0;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -37,12 +64,23 @@ export const CTAButton = styled(Link)`
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+  }
 `;
 
 export const IconWrapper = styled.div`
   font-size: 2.5rem;
   margin-bottom: 1rem;
   cursor: default;
+
   @media (prefers-reduced-motion: no-preference) {
     animation: bounce 2s infinite;
   }
@@ -55,14 +93,22 @@ export const IconWrapper = styled.div`
       transform: translateY(-10px);
     }
   }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+  }
 `;
 
-// Dodatkowe style dla Hero Section
 export const HeroSection = styled.section`
   text-align: center;
   margin: 6rem 0;
   padding: 0 1rem;
   cursor: default;
+
   h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     margin-bottom: 1.5rem;
@@ -76,9 +122,16 @@ export const HeroSection = styled.section`
     max-width: 600px;
     margin: 0 auto;
   }
+
+  @media (max-width: 768px) {
+    margin: 4rem 0;
+  }
+
+  @media (max-width: 480px) {
+    margin: 3rem 0;
+  }
 `;
 
-// Rozszerzenie stylów dla Feature Card
 export const FeatureCard = styled(motion.div)`
   padding: 2rem;
   border-radius: 15px;
@@ -86,6 +139,7 @@ export const FeatureCard = styled(motion.div)`
   text-align: center;
   transition: all 0.3s ease;
   cursor: default;
+
   h3 {
     font-size: 1.5rem;
     margin: 1rem 0;
@@ -101,15 +155,43 @@ export const FeatureCard = styled(motion.div)`
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
 `;
 
-// Responsywność
 export const HomeContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   cursor: default;
+
   @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
     padding: 1rem;
   }
 `;
@@ -120,8 +202,16 @@ export const FeaturesGrid = styled.div`
   gap: 2rem;
   margin: 4rem 0;
   cursor: default;
+
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
+    margin: 3rem 0;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
   }
 `;

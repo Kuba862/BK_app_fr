@@ -41,7 +41,7 @@ const Home = () => {
         </FeatureCard>
         <FeatureCard>
           <IconWrapper>💾</IconWrapper>
-          <h3>Automatyczny zapis</h3>
+          <h3>Moliwość zapisu</h3>
           <p>Twoja praca jest bezpieczna</p>
         </FeatureCard>
         <FeatureCard>

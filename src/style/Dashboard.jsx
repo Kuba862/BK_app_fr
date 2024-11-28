@@ -2,12 +2,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const DashboardContainer = styled.div`
-  /* min-height: calc(100vh - 200px); */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 export const DashboardCard = styled(Link)`
@@ -35,6 +42,18 @@ export const DashboardCard = styled(Link)`
   &:active {
     transform: translateY(0);
   }
+
+  @media (max-width: 768px) {
+    width: 250px;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 200px;
+    padding: 1rem;
+    margin: 0.5rem;
+    font-size: 0.9rem;
+  }
 `;
 
 export const LoadingContainer = styled.div`
@@ -44,4 +63,14 @@ export const LoadingContainer = styled.div`
   min-height: calc(100vh - 200px);
   color: ${(props) => props.theme.textPrimary};
   font-size: 1.2rem;
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 150px);
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    min-height: calc(100vh - 100px);
+    font-size: 1rem;
+  }
 `;

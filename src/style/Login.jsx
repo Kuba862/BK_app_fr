@@ -13,6 +13,7 @@ export const LoginForm = styled.form`
     flex-direction: column;
     margin-bottom: 1.5rem;
     width: 100%;
+
     label {
       display: block;
       margin-bottom: 0.5rem;
@@ -50,6 +51,7 @@ export const LoginForm = styled.form`
       font-weight: 600;
       cursor: pointer;
       transition: transform 0.2s ease, background 0.2s ease;
+
       &:hover {
         background: ${(props) => props.theme.primaryHover};
         transform: translateY(-1px);
@@ -59,9 +61,53 @@ export const LoginForm = styled.form`
         transform: translateY(0);
       }
     }
-    @media (max-width: 480px) {
-      margin: 1rem;
-      padding: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 350px;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+
+    div {
+      margin-bottom: 1.2rem;
+
+      label {
+        font-size: 0.85rem;
+      }
+
+      input {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+      }
+
+      button {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    max-width: 300px;
+    margin: 1rem;
+    padding: 1rem;
+
+    div {
+      margin-bottom: 1rem;
+
+      label {
+        font-size: 0.8rem;
+      }
+
+      input {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+      }
+
+      button {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+      }
     }
   }
 `;
@@ -79,6 +125,26 @@ export const LoginContainer = styled.div`
     margin-bottom: 2rem;
     text-align: center;
   }
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 150px);
+    padding: 1.5rem;
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    min-height: calc(100vh - 100px);
+    padding: 1rem;
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const LoginInfo = styled.div`
@@ -94,5 +160,17 @@ export const LoginInfo = styled.div`
 
   &.success {
     color: ${(props) => props.theme.success};
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 0.8rem;
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 0.6rem;
+    padding: 0.6rem;
+    font-size: 0.8rem;
   }
 `;

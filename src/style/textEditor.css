@@ -2,73 +2,130 @@
     color: black !important;
     max-width: 100%;
     height: auto;
-  }
-  
-  .ProseMirror p {
-    color: black !important;
-  }
-  
-  .editor_content {
-    color: black !important;
-  }
-  
-  /* Style dla różnych elementów edytora */
-  .ProseMirror h1,
-  .ProseMirror h2,
-  .ProseMirror h3,
-  .ProseMirror h4,
-  .ProseMirror h5,
-  .ProseMirror h6,
-  .ProseMirror ul,
-  .ProseMirror ol,
-  .ProseMirror li,
-  .ProseMirror blockquote {
-    color: black !important;
-  }
-  
-  /* Style dla tabeli */
-  .ProseMirror table {
-    color: black !important;
-  }
-  
-  .ProseMirror th,
-  .ProseMirror td {
-    color: black !important;
-  }
+    margin-bottom: 100px;
+}
 
-  .resizable-image {
+.ProseMirror p {
+    color: black !important;
+}
+
+.editor_content {
+    color: black !important;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6,
+.ProseMirror ul,
+.ProseMirror ol,
+.ProseMirror li,
+.ProseMirror blockquote {
+    color: black !important;
+}
+
+.ProseMirror table {
+    color: black !important;
+}
+
+.ProseMirror th,
+.ProseMirror td {
+    color: black !important;
+}
+
+.resizable-image {
     cursor: pointer;
     transition: outline 0.2s ease;
-  }
+    max-width: 100%;
+    height: auto;
+}
 
-  .resizable-image:hover {
+.resizable-image:hover {
     outline: 2px solid #e0e0e0;
     outline-offset: 2px;
-  }
-
-  .resizable-image:focus,
-.resizable-image:focus-within {
-  outline: 2px solid #0096fd;
-  outline-offset: 2px;
 }
-  
-  .resizable-image.ProseMirror-selectednode {
+
+.resizable-image:focus,
+.resizable-image:focus-within {
     outline: 2px solid #0096fd;
     outline-offset: 2px;
-  }
+}
 
-  .inline-image {
+.resizable-image.ProseMirror-selectednode {
+    outline: 2px solid #0096fd;
+    outline-offset: 2px;
+}
+
+.inline-image {
     display: inline;
     vertical-align: middle;
     margin: 0 2px;
-  }
-  
-  .inline-paragraph {
+}
+
+.inline-paragraph {
     display: block;
     margin: 1em 0;
     padding: 0;
-  }
+}
 
-  .text-editor p {
+.text-editor p {
     margin: 1em 0;
-  }
+}
+
+@media (max-width: 768px) {
+    .ProseMirror {
+        margin-bottom: 80px;
+        font-size: 0.95rem;
+    }
+
+    .ProseMirror h1 { font-size: 1.8rem; }
+    .ProseMirror h2 { font-size: 1.6rem; }
+    .ProseMirror h3 { font-size: 1.4rem; }
+    .ProseMirror h4 { font-size: 1.2rem; }
+    .ProseMirror h5 { font-size: 1.1rem; }
+    .ProseMirror h6 { font-size: 1rem; }
+
+    .inline-paragraph {
+        margin: 0.8em 0;
+    }
+
+    .text-editor p {
+        margin: 0.8em 0;
+    }
+
+    .resizable-image {
+        margin: 0.8em 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .ProseMirror {
+        margin-bottom: 60px;
+        font-size: 0.9rem;
+    }
+
+    .ProseMirror h1 { font-size: 1.6rem; }
+    .ProseMirror h2 { font-size: 1.4rem; }
+    .ProseMirror h3 { font-size: 1.2rem; }
+    .ProseMirror h4 { font-size: 1.1rem; }
+    .ProseMirror h5 { font-size: 1rem; }
+    .ProseMirror h6 { font-size: 0.9rem; }
+
+    .inline-paragraph {
+        margin: 0.6em 0;
+    }
+
+    .text-editor p {
+        margin: 0.6em 0;
+    }
+
+    .resizable-image {
+        margin: 0.6em 0;
+    }
+
+    .inline-image {
+        margin: 0 1px;
+    }
+}

@@ -10,6 +10,16 @@ export const DeleteContainer = styled.div`
     padding: 2rem; 
     width: 50%;
     margin: 2rem auto 0;
+
+    @media (max-width: 768px) {
+        width: 70%;
+        padding: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+        width: 90%;
+        padding: 1rem;
+    }
 `
 
 export const DeleteButtonsContainer = styled.div`
@@ -17,6 +27,14 @@ export const DeleteButtonsContainer = styled.div`
     justify-content: space-around;
     gap: 1rem;
     width: 20%;
+
+    @media (max-width: 768px) {
+        width: 40%;
+    }
+
+    @media (max-width: 480px) {
+        width: 80%;
+    }
 `
 
 export const DeleteButton = styled.button`
@@ -32,6 +50,11 @@ export const DeleteButton = styled.button`
     &:hover {
         background-color: ${props => props.theme.primaryHover || '#000'};
     }
+
+    @media (max-width: 480px) {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
 `
 
 export const InfoText = styled.p`
@@ -41,5 +64,10 @@ export const InfoText = styled.p`
     color: ${props => props.theme.textPrimary || '#333'};
     strong {
         text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
     }
 `
